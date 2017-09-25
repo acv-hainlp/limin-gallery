@@ -1,3 +1,8 @@
+import { AuthService } from './shared/services/auth.service';
+import { environment } from './../environments/environment';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +24,9 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
@@ -26,7 +34,9 @@ import { ProfileComponent } from './profile/profile.component';
       { path: 'profile', component: ProfileComponent},
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

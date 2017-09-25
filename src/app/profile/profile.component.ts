@@ -1,3 +1,4 @@
+import { AuthService } from '../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -30,5 +31,4 @@ export class ProfileComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
 }
