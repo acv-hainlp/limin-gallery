@@ -1,3 +1,4 @@
+import { AuthGuardService } from './shared/services/auth-guard.service';
 import { AuthService } from './shared/services/auth.service';
 import { environment } from './../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -29,13 +30,14 @@ import { ProfileComponent } from './profile/profile.component';
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
+      { path: '', component: HomeComponent, },
       { path: 'login', component: LoginComponent},
-      { path: 'profile', component: ProfileComponent},
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

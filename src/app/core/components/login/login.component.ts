@@ -9,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router ) { }
+  constructor(private authService: AuthService, private router: Router ) {
+    authService.user$.subscribe(user => {if(user) router.navigateByUrl('')});
+   }
 
   ngOnInit() {
   }
 
   loginGoogle() {
     this.authService.loginGoogle();
-    this.router.navigate(['home'], {queryParams: { returnUrl: 'home'}});
+    
   }
 
 }
