@@ -3,11 +3,11 @@
         <a class="navbar-brand" href="#">
             <h1><i class="fa fa-pinterest" aria-hidden="true"></i></h1>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
               <span class="navbar-toggler-icon"></span>
             </button>
-        <div class="collapse navbar-collapse" id="navbarText">
+        <div class="collapse navbar-collapse" id="collapseExample" [ngbCollapse]="!isCollapsed">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <input style="min-width:600px" type="text" class="form-control bg-light border-0" placeholder="Search..">
@@ -26,7 +26,7 @@
         <div class="card">
             <img class="card-img-top img-fluid" src="https://i.pinimg.com/236x/64/ac/d2/64acd2c6a6b9ccfb7f44f1d9d5197fd0.jpg" >
             <div class="middle">
-                <button class="btn btn-danger"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                <button class="btn btn-danger p-2"><i class="fa fa-heart" aria-hidden="true"></i></button>
             </div>
             <div class="card-body">
                 <h4 class="card-title">Card title that wraps to a new line</h4>
