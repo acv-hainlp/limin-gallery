@@ -1,0 +1,22 @@
+<!-- navbar -->
+<nav class="navbar navbar-expand-sm navbar-light py-0 border">
+  <a class="navbar-brand" href="">
+    <h1><i class="fa fa-pinterest" aria-hidden="true"></i></h1>
+  </a>
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  <div class="collapse navbar-collapse" id="collapseExample" [ngbCollapse]="!isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <input style="min-width:600px" type="text" class="form-control bg-light border-0" placeholder="Search..">
+      </li>
+    </ul>
+    <span class="navbar-text" style="font-size:28px">
+                    <a routerLink="profile"><img class=" rounded-circle" src="https://scontent.fhan1-1.fna.fbcdn.net/v/t1.0-9/21077659_1688767994466912_6543688498979365474_n.jpg?oh=83fc75309506e242aba6c5d934b72647&oe=5A49D598" alt="" width="40px"></a>
+                    <a class="mx-3"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i></a>
+              </span>
+  </div>
+</nav>
+<!-- End nav bar -->

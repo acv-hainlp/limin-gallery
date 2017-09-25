@@ -1,83 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-
-    </style>
-
-</head>
-
-<body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light py-0 border">
-        <a class="navbar-brand" href="#">
-            <h1><i class="fa fa-pinterest" aria-hidden="true"></i></h3>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <input style="min-width:600px" type="text" class="form-control bg-light border-0" placeholder="Search..">
-                </li>
-            </ul>
-            <span class="navbar-text" style="font-size:28px">
-                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <a href="#" class="mx-3"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i></a>
-                  </span>
-        </div>
-    </nav>
-    <!-- End nav bar -->
-
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <img class="card-img-top" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">User Name</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Join on 22/02/1991</h6>
-                    </div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">User Name</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Join on 22/02/1991</h6>
                 </div>
             </div>
-            <div class="col-md-9">
-                <!-- profile nav -->
-                <nav class="nav nav-tabs" id="myTab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                        aria-expanded="true">Albums</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">All Post</a>
-                    <div class="dropdown">
-                        <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                Setting
-                              </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" id="nav-dropdown1-tab" href="#nav-dropdown1" role="tab" data-toggle="tab" aria-controls="nav-dropdown1">More Option</a>
-                            <a class="dropdown-item" id="nav-dropdown2-tab" href="#nav-dropdown2" role="tab" data-toggle="tab" aria-controls="nav-dropdown2">Log Out</a>
-                        </div>
-                    </div>
-                </nav>
-                <!--end profile nav -->
+        </div>
+        <div class="col-md-9">
 
-
-                <!--nav content -->
-                <div class="tab-content" id="nav-tabContent">
-                    <!-- all user album -->
-                    <div class="tab-pane fade show active mt-3 row" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <ngb-tabset [justify]="currentJustify">
+                <ngb-tab title="Album">
+                    <ng-template ngbTabContent>
                         <div class="row">
-                            <div class="card" data-toggle="modal" data-target="#new-album">
+                            <div class="card" (click)="open(newalbum)">
                                 <button class="btn btn-outline-secondary" style="height:100%; font-size:3em;"><i class="fa fa-plus-circle" aria-hidden="true" ></i></button>
                                 <div class="card-body">
                                     <h4 class="card-title">New Album</h4>
@@ -123,11 +61,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--end all user album -->
-                    <!-- all user post -->
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <button class="btn btn-outline-secondary btn-block btn-sm my-3" style="height:100%; font-size:3em;" data-toggle="modal" data-target="#new-post"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="All Post">
+                    <ng-template ngbTabContent>
+                        <button class="btn btn-outline-secondary btn-block btn-sm my-3" style="height:100%; font-size:3em;" (click)="open(newpost)"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                         <div class="card-columns container-fluid mt-2">
                             <div class="card">
                                 <img class="card-img-top" src="https://i.pinimg.com/236x/64/ac/d2/64acd2c6a6b9ccfb7f44f1d9d5197fd0.jpg">
@@ -276,83 +215,56 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end content -->
-                    </div>
-                    <!--end all user post -->
+                    </ng-template>
+                </ngb-tab>
 
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">More Option</div>
-                    <div class="tab-pane fade" id="nav-dropdown1" role="tabpanel" aria-labelledby="nav-dropdown1-tab">More Option</div>
-                    <div class="tab-pane fade" id="nav-dropdown2" role="tabpanel" aria-labelledby="nav-dropdown2-tab">Logout complete</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane fade" id="nav-dropdown1" role="tabpanel" aria-labelledby="nav-dropdown1-tab">...</div>
-    <div class="tab-pane fade" id="nav-dropdown2" role="tabpanel" aria-labelledby="nav-dropdown2-tab">...</div>
-    <!-- end nav content -->
+                <ngb-tab title="Setting">
+                    <ng-template ngbTabContent>
 
-    <!-- new album modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="new-album" tabindex="-1" role="dialog" aria-labelledby="new-albumLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+
+            <!-- new Album modal -->
+            <ng-template #newalbum let-c="close" let-d="dismiss">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="new-albumLabel">New Album</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                    <h4 class="modal-title">New Album</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                 </div>
                 <form>
                     <div class="modal-body">
                         <input type="text" class="form-control" placeholder="Album Title">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" (click)="d('Cross click')">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-    <!-- End new album modal -->
+            </ng-template>
+            <!-- end new Album modal -->
 
-    <!-- new post modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="new-post" tabindex="-1" role="dialog" aria-labelledby="new-postLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <!-- new Post modal -->
+            <ng-template #newpost let-c="close" let-d="dismiss">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="new-albumLabel">New Post</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h4 class="modal-title">New Post</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                 </div>
                 <form>
                     <div class="modal-body">
                         <input type="text" class="form-control" placeholder="Post Title">
                         <input type="text" class="form-control my-3" placeholder="Description">
                         <label class="btn btn-primary">
-                                File upload <input type="file" hidden>
-                        </label>
+                                    File upload <input type="file" hidden>
+                            </label>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" (click)="d('Cross click')">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-    <!-- End new post modal -->
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+            </ng-template>
+            <!-- end new Post modal -->
