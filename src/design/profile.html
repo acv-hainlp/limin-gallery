@@ -21,7 +21,7 @@
             opacity: 0;
             position: absolute;
             top: 30px;
-            right: -10px;
+            right: -25px;
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%)
         }
@@ -116,7 +116,11 @@
                                 <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22356%22%20height%3D%22280%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20356%20280%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15eb6eeb404%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A18pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15eb6eeb404%22%3E%3Crect%20width%3D%22356%22%20height%3D%22280%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22131.2890625%22%20y%3D%22148.1%22%3E356x280%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
                                     alt="">
                                 <div class="card-body">
-                                    <h4 class="card-title">Anime Manga</h4>
+                                    <div class="clearfix">
+                                       <h4 class="card-title float-left">Anime Manga </h4>
+                                       <a href="#" class="card-title float-right pt-1"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                       <a href="#" class="card-title float-right pt-1 px-2"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card">
@@ -156,8 +160,10 @@
                             <div class="card">
                                 <img class="card-img-top" src="https://i.pinimg.com/236x/64/ac/d2/64acd2c6a6b9ccfb7f44f1d9d5197fd0.jpg">
                                 <div class="middle">
-                                    <button class="btn btn-danger"><i class="fa fa-heart" aria-hidden="true"></i>
-                                            </button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-secondary"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                        </div>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">Card title that wraps to a new line</h4>
