@@ -1,0 +1,35 @@
+{
+    "users": {
+        "$uid": "id",
+        "name": "string",
+        "email": "string",
+        "dob": "date",
+        "photoUrl": "string",
+        "role": "string",
+        "posts": {
+            "$uid": "id",
+            "createOn": "date",
+            "title": "string",
+            "photoUrl": "string",
+            "description": "string",
+            "likes": [
+                {
+                    "$uid": "id",
+                    "userId": "id",
+                    "createOn": "date",
+                    "userName": "string",
+                    "isLiked" : "boolen"
+                }
+            ],
+            "comments": [
+                {
+                    "$uid": "id",
+                    "userId": "id",
+                    "createOn": "date",
+                    "userName": "string",
+                    "content": "string"
+                }
+            ]
+        }
+    }
+}
