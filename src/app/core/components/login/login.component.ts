@@ -1,3 +1,4 @@
+import { UserService } from '../../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router ) {
-    authService.user$.subscribe(user => {if(user) router.navigateByUrl('')});
+  constructor(private authService: AuthService, private router: Router, private userService: UserService ) {
+    authService.user$.subscribe(user => {
+      if(user) {
+        userService.save(user);
+        router.navigateByUrl('');
+      }
+    });
    }
 
   ngOnInit() {
