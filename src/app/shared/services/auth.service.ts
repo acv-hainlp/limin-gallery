@@ -16,6 +16,10 @@ export class AuthService {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
   }
 
+  loginFacebook() {
+    this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+  }
+
   logOut() {
     this.afAuth.auth.signOut();
   }
