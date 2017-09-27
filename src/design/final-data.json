@@ -6,6 +6,11 @@
         "dob": "date",
         "photoUrl": "string",
         "role": "string",
+        "albums": {
+            "$uid" : "id",
+            "photoUrl": "string",
+            "title" : "string"
+        },
         "posts": {
             "$uid": "id",
             "createOn": "date",
@@ -13,7 +18,8 @@
             "photoUrl": "string",
             "description": "string",
             "postCount" : "number",
-            "likes": "number"
+            "likes": "number",
+            "albumsId": "id"
         }
     },
 
