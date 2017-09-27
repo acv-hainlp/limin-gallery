@@ -1,17 +1,19 @@
+import { Subscription } from 'rxjs/Rx';
 import { UserService } from '../../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  subscription$: Subscription;
 
   constructor(private authService: AuthService, private router: Router, private userService: UserService ) {
-    authService.user$.subscribe(user => {
+    this.subscription$ = authService.user$.subscribe(user => {
       if(user) {
         userService.save(user);
         router.navigateByUrl('');
@@ -29,6 +31,12 @@ export class LoginComponent implements OnInit {
 
   loginFacebook() {
     this.authService.loginFacebook();
+  }
+  
+  ngOnDestroy() {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription$.unsubscribe;
   }
 
 }

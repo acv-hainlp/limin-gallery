@@ -12,7 +12,6 @@ export class UserAlbumsService {
   create(newAlbum) {
     newAlbum.createOn = Date.now();
     let newAlbumDb = this.removeNull(newAlbum);
-    console.log(newAlbumDb);
     
     this.db.list('/users/' + this.userId + '/albums/').push(newAlbumDb); //push to root/users/{{userId}}/albums/
   }

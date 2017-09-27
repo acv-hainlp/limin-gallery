@@ -1,5 +1,7 @@
-import { AuthService } from '../shared/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
+import { AuthService } from './../shared/services/auth.service';
+import { UserService } from './../shared/services/user.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,9 +9,15 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   closeResult: string;
-  constructor(private modalService: NgbModal) { }
+  userData$;
+  subscription$: Subscription;
+  constructor(private modalService: NgbModal, private userService: UserService, private authService: AuthService) {
+      this.subscription$ = authService.user$.subscribe(user =>
+        this.userData$ = userService.getAllUserData(user.uid)
+      )
+   }
 
   ngOnInit() {
   }
@@ -30,5 +38,11 @@ export class ProfileComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  ngOnDestroy() {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription$.unsubscribe();
   }
 }
