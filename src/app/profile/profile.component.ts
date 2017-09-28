@@ -1,4 +1,7 @@
-import { Subscription } from 'rxjs/Rx';
+import { Album } from './../shared/models/album';
+import { FirebaseObjectObservable } from 'angularfire2/database';
+import { User } from './../shared/models/user';
+import { Subscription, Observable } from 'rxjs/Rx';
 import { AuthService } from './../shared/services/auth.service';
 import { UserService } from './../shared/services/user.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -11,12 +14,16 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   closeResult: string;
+  useAlbums;
   userData$;
   subscription$: Subscription;
   constructor(private modalService: NgbModal, private userService: UserService, private authService: AuthService) {
-      this.subscription$ = authService.user$.subscribe(user =>
-        this.userData$ = userService.getAllUserData(user.uid)
-      )
+      this.subscription$ = authService.user$.subscribe(user =>{
+        userService.getAllUserData(user.uid).subscribe(userData => {
+          this.useAlbums = userData.albums;
+          this.userData$ = userData;
+        });
+    }) 
    }
 
   ngOnInit() {
@@ -39,6 +46,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       return  `with: ${reason}`;
     }
   }
+
+//   generateArray(obj){
+//     return Object.keys(obj).map((key)=>{ return obj[key]});
+//  }
 
   ngOnDestroy() {
     //Called once, before the instance is destroyed.

@@ -1,3 +1,4 @@
+import { Album } from '../models/album';
 import { AuthService } from './auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
@@ -9,9 +10,9 @@ export class UserAlbumsService {
     this.authService.user$.subscribe(user => this.userId = user.uid);
   }
 
-  create(newAlbum) {
+  create(newAlbum: Album) {
     newAlbum.createOn = Date.now();
-    let newAlbumDb = this.removeNull(newAlbum);
+    let newAlbumDb = this.removeNull(newAlbum); 
     
     this.db.list('/users/' + this.userId + '/albums/').push(newAlbumDb); //push to root/users/{{userId}}/albums/
   }

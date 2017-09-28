@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs/Rx';
+import { User } from './../models/user';
 import { AuthService } from './auth.service';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 
@@ -17,8 +19,8 @@ export class UserService {
      });
    }
 
-   getAllUserData(userId) {
-     return this.db.list('/users/' + userId );
+   getAllUserData(userId): Observable<User> {
+     return this.db.object('/users/' + userId)
    }
 
 }

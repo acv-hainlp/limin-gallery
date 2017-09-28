@@ -1,3 +1,4 @@
+import { Album } from './../../shared/models/album';
 import { UserAlbumsService } from './../../shared/services/user-albums.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +14,7 @@ export class AlbumFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  save(newAlbum) {
+  save(newAlbum : Album) {
     this.userAlbumsService.create(newAlbum); 
   }
 
