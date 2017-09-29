@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./album-form.component.css']
 })
 export class AlbumFormComponent implements OnInit {
+  newAction = true;
 
   selectedFiles: File; // :Filelist to save multi file
 
@@ -20,11 +21,10 @@ export class AlbumFormComponent implements OnInit {
   save(newAlbum : Album) {
     newAlbum.photo = this.selectedFiles; // this.selectedFiles.item(0) when use mutli file
     this.userAlbumsService.create(newAlbum);
-    this.router.navigate(['/profile']);
+    this.newAction = !this.newAction;
   }
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
-}
-
+  }
 }

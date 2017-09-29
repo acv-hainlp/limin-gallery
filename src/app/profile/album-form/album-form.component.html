@@ -1,6 +1,11 @@
-<form #f="ngForm" (ngSubmit)="save(f.value);d('Cross click')">
+<form *ngIf="newAction else complete" #f="ngForm" (ngSubmit)="save(f.value);" >
     <input ngModel type="text" name="title" class="form-control" placeholder="Album Title" required>
-        <input class="form-control mt-3" type="file" (change)="detectFiles($event)" placeholder="Upload file" accept=".pdf,.jpg,.gif">
+        <input class="form-control mt-3" type="file" (change)="detectFiles($event)" placeholder="Upload file" accept=".png,.jpg,.gif">
     <hr>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
-</form>
+</form> 
+
+<ng-template #complete>
+    Upload complete
+</ng-template>
+
