@@ -16,12 +16,9 @@
                         <div class="card-columns">
                             <div class="card" (click)="open(newalbum)">
                                 <button class="btn btn-outline-secondary btn-block" style="height:100%; font-size:3em;"><i class="fa fa-plus-circle" aria-hidden="true" ></i></button>
-                                <div class="card-body">
-                                    <h4 class="card-title">New Album</h4>
-                                </div>
                             </div>
                             <div *ngFor="let x of userAlbums" class="card">
-                                <app-album-card [album]="userData$.albums[x]"></app-album-card>
+                                <app-album-card [album]="userData$.albums[x]" [key]="x"></app-album-card>
                             </div>
                         </div>
                     </ng-template>

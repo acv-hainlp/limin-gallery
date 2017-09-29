@@ -32,6 +32,10 @@ export class UserAlbumsService {
       } else this.db.list('/users/' + this.userId + '/albums/').push(newAlbumDb);
     };
     
+
+  delete(albumId) {
+    this.db.object('/users/' + this.userId + '/albums/' + albumId).remove();
+  }  
   removeNull(object) {
     for (let key in object) {
       let value = object[key];
