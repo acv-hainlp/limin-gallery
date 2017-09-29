@@ -1,3 +1,4 @@
+import { UserAlbumsService } from '../shared/services/user-albums.service';
 import { Album } from './../shared/models/album';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { User } from './../shared/models/user';
@@ -14,14 +15,14 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   closeResult: string;
-  useAlbums;
+  userAlbums = []; //save key in here
   userData$;
   subscription$: Subscription;
   constructor(private modalService: NgbModal, private userService: UserService, private authService: AuthService) {
       this.subscription$ = authService.user$.subscribe(user =>{
         userService.getAllUserData(user.uid).subscribe(userData => {
-          this.useAlbums = userData.albums;
           this.userData$ = userData;
+          this.userAlbums = Object.keys(userData.albums); // save all key to variable
         });
     }) 
    }
