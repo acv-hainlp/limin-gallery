@@ -1,6 +1,6 @@
-<form #f="ngForm" (ngSubmit)="save(f.value)">
+<form #f="ngForm" (ngSubmit)="save(f.value);d('Cross click')">
     <input ngModel type="text" name="title" class="form-control" placeholder="Album Title" required>
-        <label class="btn btn-primary mt-2"> Image upload <input type="file" hidden> </label>
+        <input class="form-control mt-3" type="file" (change)="detectFiles($event)" placeholder="Upload file" accept=".pdf,.jpg,.gif">
     <hr>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
 </form>

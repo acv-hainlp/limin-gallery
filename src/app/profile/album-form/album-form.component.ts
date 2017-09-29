@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Album } from './../../shared/models/album';
 import { UserAlbumsService } from './../../shared/services/user-albums.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,13 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumFormComponent implements OnInit {
 
-  constructor(private userAlbumsService: UserAlbumsService) { }
+  selectedFiles: File; // :Filelist to save multi file
+
+  constructor(private userAlbumsService: UserAlbumsService, private router: Router) { }
 
   ngOnInit() {
   }
 
   save(newAlbum : Album) {
-    this.userAlbumsService.create(newAlbum); 
+    newAlbum.photo = this.selectedFiles; // this.selectedFiles.item(0) when use mutli file
+    this.userAlbumsService.create(newAlbum);
+    this.router.navigate(['/profile']);
   }
+
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
+}
 
 }

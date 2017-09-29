@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.subscription$ = authService.user$.subscribe(user =>{
         userService.getAllUserData(user.uid).subscribe(userData => {
           this.userData$ = userData;
-          this.userAlbums = Object.keys(userData.albums); // save all key to variable
+          if (userData.albums) this.userAlbums = Object.keys(userData.albums); // save all key to variable
         });
     }) 
    }

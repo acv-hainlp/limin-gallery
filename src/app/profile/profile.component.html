@@ -13,9 +13,9 @@
             <ngb-tabset [justify]="currentJustify">
                 <ngb-tab title="Album">
                     <ng-template ngbTabContent>
-                        <div class="row">
+                        <div class="card-columns">
                             <div class="card" (click)="open(newalbum)">
-                                <button class="btn btn-outline-secondary" style="height:100%; font-size:3em;"><i class="fa fa-plus-circle" aria-hidden="true" ></i></button>
+                                <button class="btn btn-outline-secondary btn-block" style="height:100%; font-size:3em;"><i class="fa fa-plus-circle" aria-hidden="true" ></i></button>
                                 <div class="card-body">
                                     <h4 class="card-title">New Album</h4>
                                 </div>
@@ -209,7 +209,7 @@
                     <h4 class="modal-title">New Album</h4>
                     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                 <span aria-hidden="true">&times;</span>
-                              </button>
+                     </button>
                 </div>
                 <div class="modal-body">
                     <app-post-form></app-post-form>
