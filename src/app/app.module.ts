@@ -19,6 +19,7 @@ import { LoginComponent } from './core/components/login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AlbumFormComponent } from './profile/album-form/album-form.component';
 import { AlbumCardComponent } from './profile/album-card/album-card.component';
+import { PostFormComponent } from './profile/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AlbumCardComponent } from './profile/album-card/album-card.component';
     LoginComponent,
     ProfileComponent,
     AlbumFormComponent,
-    AlbumCardComponent
+    AlbumCardComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,

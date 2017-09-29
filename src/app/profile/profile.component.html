@@ -1,10 +1,10 @@
-<div class="container mt-3">
+<div *ngIf="userData$" class="container mt-3">
     <div class="row">
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="Card image cap">
+                <img class="card-img-top" [src]="userData$.photoUrl" alt="Card image cap">
                 <div class="card-body">
-                    <h4 class="card-title">User Name</h4>
+                    <h4 class="card-title">{{userData$.name}}</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Join on 22/02/1991</h6>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                 </ngb-tab>
             </ngb-tabset>
 
-            
+
             <!-- new Album modal -->
             <ng-template #newalbum let-c="close" let-d="dismiss">
                 <div class="modal-header">
@@ -197,34 +197,22 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                 </div>
-                    <div class="modal-body">
-                        <app-album-form></app-album-form>
-                    </div>
+                <div class="modal-body">
+                    <app-album-form></app-album-form>
+                </div>
             </ng-template>
             <!-- end new Album modal -->
 
             <!-- new Post modal -->
             <ng-template #newpost let-c="close" let-d="dismiss">
                 <div class="modal-header">
-                    <h4 class="modal-title">New Post</h4>
+                    <h4 class="modal-title">New Album</h4>
                     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                 </div>
-                <form>
-                    <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="Post Title">
-                        <input type="text" class="form-control my-3" placeholder="Description">
-                        <label class="btn btn-primary">
-                                    File upload <input type="file" hidden>
-                            </label>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" (click)="d('Cross click')">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                <div class="modal-body">
+                    <app-post-form></app-post-form>
+                </div>
             </ng-template>
             <!-- end new Post modal -->
-
-                

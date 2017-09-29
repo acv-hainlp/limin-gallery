@@ -16,7 +16,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class ProfileComponent implements OnInit, OnDestroy {
   closeResult: string;
   userAlbums = []; //save key in here
-  userData$;
+  userData$: User;
   subscription$: Subscription;
   constructor(private modalService: NgbModal, private userService: UserService, private authService: AuthService) {
       this.subscription$ = authService.user$.subscribe(user =>{

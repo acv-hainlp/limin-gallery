@@ -1,10 +1,11 @@
-<div class="card">
-    <img class="card-img-top" src="{{ album.photoUrl }}" alt="">
-    <div class="card-body">
-        <div class="clearfix">
-            <h4 class="card-title float-left">{{album.title}} </h4>
-            <a href="#" class="card-title float-right pt-1"><i class="fa fa-trash" aria-hidden="true"></i></a>
-            <a href="#" class="card-title float-right pt-1 px-2"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        </div>
+<img class="card-img-top" [src]="(album.photoUrl) ? album.photoUrl : 'https://www.panasonic-electric-works.com/static/img/partners/no_image.png'" alt="">
+<div class="card-body">
+    <div class="clearfix">
+        <h4 class="card-title float-left">{{album.title}} </h4>
+        <a href="#" class="card-title float-right pt-1"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        <a href="#" class="card-title float-right pt-1 px-2"><i class="fa fa-pencil" aria-hidden="true"></i></a>
     </div>
 </div>
+<!-- 
+<div [style.backgroundImage]="'url(' + album.photoUrl  + ')'" class="thumbnail" >
+    </div> -->

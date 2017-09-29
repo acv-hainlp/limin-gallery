@@ -1,6 +1,6 @@
 <form #f="ngForm" (ngSubmit)="save(f.value)">
     <input ngModel type="text" name="title" class="form-control" placeholder="Album Title" required>
-    <input ngModel type="text" name="photoUrl" class="form-control mt-3" placeholder="Photo">
+        <label class="btn btn-primary mt-2"> Image upload <input type="file" hidden> </label>
     <hr>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button>
 </form>
