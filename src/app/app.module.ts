@@ -18,6 +18,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AlbumFormComponent } from './profile/album-form/album-form.component';
+import { AlbumCardComponent } from './profile/album-card/album-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AlbumFormComponent } from './profile/album-form/album-form.component';
     NavbarComponent,
     LoginComponent,
     ProfileComponent,
-    AlbumFormComponent
+    AlbumFormComponent,
+    AlbumCardComponent
   ],
   imports: [
     BrowserModule,

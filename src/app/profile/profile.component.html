@@ -21,14 +21,7 @@
                                 </div>
                             </div>
                             <div *ngFor="let x of userAlbums" class="card">
-                                <img class="card-img-top" src="{{ userData$.albums[x].photoUrl }}" alt="">
-                                <div class="card-body">
-                                    <div class="clearfix">
-                                        <h4 class="card-title float-left">{{userData$.albums[x].title}} </h4>
-                                        <a href="#" class="card-title float-right pt-1"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        <a href="#" class="card-title float-right pt-1 px-2"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
+                                <app-album-card [album]="userData$.albums[x]"></app-album-card>
                             </div>
                         </div>
                     </ng-template>
