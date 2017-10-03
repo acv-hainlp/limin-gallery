@@ -16,9 +16,9 @@ export class UserAlbumsService {
     let newAlbumDb = this.removeNull(newAlbum);
 
     if (newAlbum.photo) {
-      let photoName = this.userId + '_' + newAlbum.createOn //set new unique name
+      newAlbum.photoName = this.userId + '_' + newAlbum.createOn //set new unique name
       let rootPath = firebase.storage().ref();
-      let filePath = '/images/'+ this.userId + ('/') + photoName
+      let filePath = '/images/'+ this.userId + ('/') + newAlbum.photoName;
       let upLoad = rootPath.child(filePath).put(newAlbum.photo[0]);
   
       upLoad.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -26,16 +26,20 @@ export class UserAlbumsService {
         (error) => { console.log(error) },// upload failed
         () => {
           // upload success
-          newAlbum.photoUrl = upLoad.snapshot.downloadURL;
+        newAlbum.photoUrl = upLoad.snapshot.downloadURL;
          this.db.list('/users/' + this.userId + '/albums/').push(newAlbumDb);
         });
       } else this.db.list('/users/' + this.userId + '/albums/').push(newAlbumDb);
     };
     
 
-  delete(albumId) {
+  delete(album:Album, albumId: string) {
     this.db.object('/users/' + this.userId + '/albums/' + albumId).remove();
+      let rootPath = firebase.storage().ref();
+      let filePath = '/images/'+ this.userId + ('/') + album.photoName;
+      rootPath.child(filePath).delete();
   }  
+
   removeNull(object) {
     for (let key in object) {
       let value = object[key];

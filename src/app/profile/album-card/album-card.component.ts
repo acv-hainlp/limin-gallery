@@ -16,9 +16,10 @@ export class AlbumCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteAlbum(albumsId) {
+  deleteAlbum(album:Album, albumId) {
     if(!confirm('Bạn chắc chắn muốn xóa khóa học này ?')) return;
-    this.userAlbumsService.delete(albumsId);
+    this.userAlbumsService.delete(album,albumId);
+    
   }
 
 }
